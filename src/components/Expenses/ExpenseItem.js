@@ -7,7 +7,6 @@ import "./ExpenseItem.css";
 const ExpenseItem = (props) => {
   // first elementは現在のstateの値。second elementは更新する値
   const [title, setTitle] = useState(props.title);
-  console.log("evaluated by react");
 
   const clickHnadler = () => {
     setTitle("Updated!!");
