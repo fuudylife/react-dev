@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
-import "./Expenses.css"
+import ExpensesFilter from "./ExpensesFilter";
+
+import "./Expenses.css";
 
 const Expenses = (props) => {
   const expense = props.items.map((item, index) => (
-    <ExpenseItem title={item.title} amount={item.amount} date={item.date} key={index}/>
+    <ExpenseItem
+      title={item.title}
+      amount={item.amount}
+      date={item.date}
+      key={index}
+    />
   ));
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  const filterWithPickedyear = (clickedyear) => {
+    setFilteredYear(clickedyear);
+    return console.log(filteredYear);
+  };
+
   return (
-    <Card className="expenses">
-      {expense}
-    </Card>
+    <div>
+      <Card className="expenses">
+        <ExpensesFilter
+          selected={filteredYear}
+          onClickPickyear={filterWithPickedyear}
+        />
+        {expense}
+      </Card>
+    </div>
   );
-}
+};
 
 export default Expenses;

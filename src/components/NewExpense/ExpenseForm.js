@@ -42,6 +42,7 @@ const ExpenseForm = (props) => {
   };
 
   const sumbmitHandler = (event) => {
+    // pageのレロードを防ぐためそこに付随するrequestなど
     event.preventDefault();
 
     const expenseData = {
