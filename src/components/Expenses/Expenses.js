@@ -15,6 +15,7 @@ const Expenses = (props) => {
       key={index}
     />
   ));
+  // first elementは現在のstateの値。second elementは更新する値
   const [filteredYear, setFilteredYear] = useState("2020");
 
   const filterWithPickedyear = (clickedyear) => {
