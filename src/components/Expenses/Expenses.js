@@ -7,12 +7,12 @@ import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
 
 const Expenses = (props) => {
-  const expense = props.items.map((item, index) => (
+  const expense = props.items.map((item) => (
     <ExpenseItem
       title={item.title}
       amount={item.amount}
       date={item.date}
-      key={index}
+      key={item.id}
     />
   ));
   // first elementは現在のstateの値。second elementは更新する値
