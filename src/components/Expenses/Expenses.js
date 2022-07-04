@@ -18,11 +18,12 @@ const Expenses = (props) => {
   // first elementは現在のstateの値。second elementは更新する値
   const [filteredYear, setFilteredYear] = useState("2020");
 
+  console.log(filteredYear)
   const filterWithPickedyear = (clickedyear) => {
     setFilteredYear(clickedyear);
-    return console.log(filteredYear);
+    return filteredYear;
   };
-
+  
   return (
     <div>
       <Card className="expenses">
