@@ -18,12 +18,14 @@ const Expenses = (props) => {
   // first elementは現在のstateの値。second elementは更新する値
   const [filteredYear, setFilteredYear] = useState("2020");
 
-  console.log(filteredYear)
   const filterWithPickedyear = (clickedyear) => {
     setFilteredYear(clickedyear);
-    return filteredYear;
   };
-  
+
+  const filteredExpenses = expense.filter((item) => {
+    return item.props.date.getFullYear().toString() === filteredYear;
+  });
+
   return (
     <div>
       <Card className="expenses">
@@ -31,7 +33,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onClickPickyear={filterWithPickedyear}
         />
-        {expense}
+        {filteredExpenses}
       </Card>
     </div>
   );
