@@ -26,6 +26,13 @@ const Expenses = (props) => {
     return item.props.date.getFullYear().toString() === filteredYear;
   });
 
+  // JSXコンテンツを変数に格納することができます。
+  let expensesContent = <p>No expenses found.</p>;
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -33,7 +40,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onClickPickyear={filterWithPickedyear}
         />
-        {filteredExpenses}
+        {expensesContent}
       </Card>
     </div>
   );
