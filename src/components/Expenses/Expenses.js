@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 
-import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 import "./Expenses.css";
 
 const Expenses = (props) => {
-  const expense = props.items.map((item) => (
-    <ExpenseItem
-      title={item.title}
-      amount={item.amount}
-      date={item.date}
-      key={item.id}
-    />
-  ));
   // first elementは現在のstateの値。second elementは更新する値
   const [filteredYear, setFilteredYear] = useState("2020");
 
@@ -22,16 +14,9 @@ const Expenses = (props) => {
     setFilteredYear(clickedyear);
   };
 
-  const filteredExpenses = expense.filter((item) => {
-    return item.props.date.getFullYear().toString() === filteredYear;
+  const filteredExpenses = props.items.filter((item) => {
+    return item.date.getFullYear().toString() === filteredYear;
   });
-
-  // JSXコンテンツを変数に格納することができます。
-  let expensesContent = <p>No expenses found.</p>;
-
-  if (filteredExpenses.length > 0) {
-    expensesContent = filteredExpenses
-  }
 
   return (
     <div>
@@ -40,7 +25,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onClickPickyear={filterWithPickedyear}
         />
-        {expensesContent}
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );
